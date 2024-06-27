@@ -10,21 +10,24 @@ import org.yearup.models.ShoppingCart;
 import org.yearup.models.ShoppingCartItem;
 import org.yearup.models.User;
 import java.security.Principal;
-
+/*
 @CrossOrigin(origins = "http://localhost:8080")
 @RestController
+
 public class ShoppingCartController {
-    @Autowired
+    //@Autowired
     private final ShoppingCartDao shoppingCartDao;
-    @Autowired
+    //@Autowired
     private final UserDao userDao;
-    @Autowired
+    //@Autowired
     private final ProductDao productDao;
-    @Autowired
+   // @Autowired
     public ShoppingCartController(ShoppingCartDao shoppingCartDao, UserDao userDao, ProductDao productDao) {
         this.shoppingCartDao = shoppingCartDao;
         this.userDao = userDao;
         this.productDao = productDao;
+
+
     }
     @GetMapping ("/shopping_cart")
     //^ I FOUND THE PATHING ERROR!!!!!
@@ -112,4 +115,4 @@ public class ShoppingCartController {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
         }
     }
-}
+} */

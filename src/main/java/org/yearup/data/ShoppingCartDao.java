@@ -4,7 +4,7 @@ import org.yearup.models.ShoppingCart;
 import org.yearup.models.ShoppingCartItem;
 import java.sql.SQLException;
 
-@Repository
+//@Repository
 public interface ShoppingCartDao{
     ShoppingCart getByUserId(int userId) throws SQLException;
     ShoppingCart addProductToCart(int productId, int userId);

@@ -35,13 +35,13 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
         return category;
     }
     @Override
-    public int getById(int categoryId) {
+    public Category getById(int categoryId) {
         try (Connection connection = dataSource.getConnection()) {
-            try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM category WHERE category_id = ?")) {
+            try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM categories WHERE category_id = ?")) {
                 preparedStatement.setInt(1, (categoryId));
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     if (resultSet.next()) {
-                        return mapRow(resultSet).getCategoryId();
+                        return mapRow(resultSet);
                     }
                 }
             }
@@ -49,12 +49,12 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
             e.printStackTrace();
 
         }
-        return categoryId;
+        return null;
     }
     @Override
     public Category create(Category category) {
         try (Connection connection = dataSource.getConnection()) {
-            try (PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO categories (name, description, category_id) Values (?, ?, ?)")) {
+            try (PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO categories (name, description) Values (?, ?)")) {
                 preparedStatement.setString(1, category.getName());
                 preparedStatement.setString(2, category.getDescription());
                 int affectedRows = preparedStatement.executeUpdate();
