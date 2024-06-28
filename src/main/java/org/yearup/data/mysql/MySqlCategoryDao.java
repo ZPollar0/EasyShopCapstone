@@ -92,7 +92,7 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
     {
         try (Connection connection = dataSource.getConnection()){
             try(PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM categories WHERE category_id = ?")){
-                preparedStatement.setInt(1, categoryId);
+                preparedStatement.setInt(0, categoryId);
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException e) {
